@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Smarter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #f8f9fa;
+            height: 100px; /* Fixed header height to prevent banner growing */
+        }
+
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .logo-img {
+            height: 180px; /* Keep size */
+            width: auto;
+            margin-right: 15px;
+            object-fit: contain;
+            margin-top: 120px; /* Move it further down */
+        }
+
+        .logo-text .smarter {
+            color: #007bff;
+        }
+
+        .logo-text .sidekicks {
+            color: #333;
+            display: block;
+        }
+
+
+
+        .book-call-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 16px 28px; /* Increased from 12px 24px */
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            align-self: flex-start;
+            margin-top: 40px;
+            font-size: 18px; /* Increase font size slightly */
+        }
+
+        .book-call-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 20px 50px 80px 50px; /* Reduced top padding from 40px to 20px */
+            background-color: #f8f9fa;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 15px; /* Reduced margin-bottom */
+            line-height: 1.2;
+        }
+
+        .hero-video {
+            margin: 40px auto;
+            max-width: 80%;
+            height: 400px; /* reduced height */
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(100%);
+            animation: slideInRight 1.5s forwards;
+            animation-delay: 0.5s; /* optional delay */
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Removed .video-embed CSS as it's no longer needed with direct embed code */
+
+        .cta-button {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 80px;
+            transition: background-color 0.5s ease, transform 0.3s ease, color 0.5s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #6c757d; /* Fade to grey */
+            color: #f8f9fa; /* Text color for contrast */
+            transform: translateY(-3px); /* Slight upward shift */
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 60px 50px;
+            background-color: #f8f9fa; /* Changed from white to lighter grey */
+        }
+
+        .portfolio-videos {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .portfolio-video {
+            width: calc(33.33% - 20px); /* Adjusted width for 3 videos with gap */
+            height: 220px; /* Slightly taller */
+            background-color: #f8f9fa; /* Changed from #333 to lighter grey */
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-video img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Clients Section */
+        .clients {
+            background-color: #222; /* Darker grey */
+            color: white;
+            padding: 60px 50px;
+            text-align: center;
+        }
+
+        .clients h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .client-logos-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .client-logo-placeholder {
+            width: 150px; /* Adjust as needed */
+            height: 80px; /* Adjust as needed */
+            background-color: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            border-radius: 8px;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            width: 90%; /* Wider, almost edge-to-edge */
+            height: 2px;
+            background-color: white; /* Changed to white */
+            margin: 0 auto 40px auto; /* Center the line and add margin below */
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #222; /* Darker grey */
+            color: white;
+            padding: 60px 50px;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 48px; /* Increased font size */
+            font-weight: 900; /* Made bolder */
+            margin-bottom: 20px;
+        }
+
+        .testimonials .subtitle {
+            color: #007bff;
+            font-size: 28px; /* Increased font size */
+            font-weight: bold; /* Made bolder */
+            margin-bottom: 40px;
+        }
+
+        .testimonial-container {
+            max-width: 1000px; /* Increased max-width to accommodate side-by-side */
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row; /* Changed to row for side-by-side */
+            flex-wrap: wrap; /* Allow wrapping for multiple testimonials */
+            justify-content: center; /* Center items when they wrap */
+            gap: 30px;
+            align-items: flex-start; /* Align items to the top */
+        }
+
+        .testimonial-placeholder {
+            width: 450px; /* Adjust as needed for two per row */
+            height: 250px; /* Adjust as needed */
+            background-color: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            padding: 20px; /* Added padding */
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #f8f9fa;
+            padding: 40px 50px;
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            gap: 50px; /* Space between logo and contact details */
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .footer-logo-img {
+            height: 100px; /* Match top logo size */
+            width: auto;    /* Keep aspect ratio */
+            margin-right: 10px;
+            object-fit: contain;
+        }
+
+        .footer-contact {
+            text-align: left;
+        }
+
+        .footer-contact .phone {
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .footer-contact .email {
+            color: #007bff; /* Changed to blue */
+            text-decoration: none;
+            font-weight: bold;
+            /* Removed border and padding for the box */
+            display: inline-block;
+        }
+
+        .footer-contact .email:hover {
+            background-color: #007bff; /* Changed to blue */
+            color: #f8f9fa; /* Changed to white */
+        }
+
+        .copyright {
+            text-align: center;
+            color: #007bff;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .portfolio-videos {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .testimonial-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-contact {
+                text-align: center;
+            }
+
+            .client-logos-container {
+                gap: 30px;
+            }
+        }
+    </style>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="logo 2.png" alt="Smarter Sidekicks Logo" class="logo-img">
+        </div>
+        
+        <a href="#" class="book-call-btn" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/hassanfive90/45min', prefill: {}, utm: {}, branding: true, pageSettings: {hideEventTypeDetails: false, hideLandingPageDetails: false, primaryColor: '#007bff', textColor: '#000000'}, modalWidth: 900, modalHeight: 700}); return false;">Book a Call</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 140px 50px 80px 50px; background-color: #f8f9fa;">
+        <div class="hero-text" style="flex: 1; min-width: 300px; text-align: left;">
+            <h1 style="line-height: 1.3; font-size: 48px; font-weight: bold;">
+                <span style="background-color: #007bff; color: white; padding: 0 8px;">Business Owners:</span> Generate 5-10 Qualified Leads Using AI and Automation 
+            </h1>
+            <p style="font-size: 20px; color: #333; margin-top: 40px; font-family: 'Assistant', sans-serif;">
+                <span id="typewriter"></span>
+            </p>
+
+            <script>
+const text = `(Or you get your money back)<br><br>
+If you want <span style="background-color: #007bff; color: white; padding: 0 4px;">MORE qualified customers</span> & a consistent flow of <span style="background-color: #007bff; color: white; padding: 0 4px;">NEW qualified customers</span>, save time and use <span style="background-color: #007bff; color: white; padding: 0 4px;">AI</span>, complete the survey and book a call…`;
+
+const typewriter = document.getElementById("typewriter");
+let index = 0;
+let deleting = false;
+let delay = 25; // typing speed
+let pauseAtEnd = 30000; // wait 30 seconds before deleting
+
+function typeDelete() {
+    if(!deleting && index <= text.length) {
+        typewriter.innerHTML = text.slice(0, index) + '<span class="cursor">|</span>';
+        index++;
+        if(index > text.length) {
+            setTimeout(() => { deleting = true; typeDelete(); }, pauseAtEnd);
+            return;
+        }
+    } else if(deleting && index >= 0) {
+        typewriter.innerHTML = text.slice(0, index) + '<span class="cursor">|</span>';
+        index--;
+        if(index < 0) {
+            deleting = false;
+        }
+    }
+    setTimeout(typeDelete, delay);
+}
+
+typeDelete();
+</script>
+
+<style>
+.cursor {
+    display: inline-block;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+</style>
+            <a href="#" class="cta-button" style="margin-top: 80px;" onclick="Calendly.initPopupWidget({
+                url: 'https://calendly.com/hassanfive90/45min',
+                prefill: {},
+                utm: {},
+                branding: true,
+                pageSettings: {hideEventTypeDetails: false, hideLandingPageDetails: false, primaryColor: '#007bff', textColor: '#000000'},
+                modalWidth: 900,
+                modalHeight: 700
+            }); return false;">
+                Book a Call
+            </a>
+        </div>
+        <div class="hero-video slide-in-right" style="flex: 1; min-width: 300px; height: 400px;">
+            <div style="position: relative; padding-bottom: 64.86161251504213%; height: 0;">
+                <iframe src="https://www.loom.com/embed/0e0fc7fc623e4caabcf9d23bb9763add?sid=a9a93796-d0c2-4514-a881-0f50f854d539" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio">
+        <div class="portfolio-videos">
+            <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                    <iframe src="https://www.loom.com/embed/0e0fc7fc623e4caabcf9d23bb9763add?sid=a9a93796-d0c2-4514-a881-0f50f854d539" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                </div>
+            </div>
+            <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                    <iframe src="https://www.loom.com/embed/0e0fc7fc623e4caabcf9d23bb9763add?sid=a9a93796-d0c2-4514-a881-0f50f854d539" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                </div>
+            </div>
+            <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                    <iframe src="https://www.loom.com/embed/0e0fc7fc623e4caabcf9d23bb9763add?sid=a9a93796-d0c2-4514-a881-0f50f854d539" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 5px;">
+            <a href="#" class="cta-button" style="padding: 24px 48px; font-size: 24px;" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/hassanfive90/45min', prefill: {}, utm: {}, branding: true, pageSettings: {hideEventTypeDetails: false, hideLandingPageDetails: false, primaryColor: '#007bff', textColor: '#000000'}, modalWidth: 900, modalHeight: 700}); return false;">Book a Call</a>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients">
+        <h2>We've built systems for:</h2>
+        <div class="client-logos-container">
+            <!-- Add your business logos here. Example: -->
+            <img src="YOUR_BUSINESS_LOGO_URL_1" alt="Business Logo 1" class="client-logo-placeholder">
+            <img src="YOUR_BUSINESS_LOGO_URL_2" alt="Business Logo 2" class="client-logo-placeholder">
+            <img src="YOUR_BUSINESS_LOGO_URL_3" alt="Business Logo 3" class="client-logo-placeholder">
+            <img src="YOUR_BUSINESS_LOGO_URL_4" alt="Business Logo 4" class="client-logo-placeholder">
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="section-divider"></div>
+        <h2>Client Testimonials</h2>
+        <p class="subtitle">AI powered Automation and Digital Marketing without crazy overheads</p>
+        
+        <div class="testimonial-container">
+            <!-- Testimonial 1 (Image) -->
+            <div class="testimonial-placeholder">
+                <img src="YOUR_TESTIMONIAL_IMAGE_URL_1" alt="Client Testimonial 1" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <!-- Testimonial 2 (Video) -->
+            <div class="testimonial-placeholder">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="YOUR_TESTIMONIAL_VIDEO_URL_2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 40px;">
+            <a href="#" class="cta-button" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/hassanfive90/45min', prefill: {}, utm: {}, branding: true, pageSettings: {hideEventTypeDetails: false, hideLandingPageDetails: false, primaryColor: '#007bff', textColor: '#000000'}, modalWidth: 900, modalHeight: 700}); return false;">Book a Call</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="logo 2.png" alt="Smarter Sidekicks Logo" class="footer-logo-img">
+        </div>
+        
+        <div class="footer-contact">
+            <div class="phone">+44 7718 049741</div>
+            <a href="mailto:hassan@smartersidekick.com" class="email">hassan@smartersidekick.com</a>
+        </div>
+    </footer>
+    
+    <div class="copyright" style="background-color: #f8f9fa; padding: 10px 20px 10px 20px; text-align: center; color: #007bff; font-size: 14px; margin: 0;">
+        Copyright © Smarter Sidekicks All Rights Reserved.
+    </div>
+</script>
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000, // animation duration
+    once: true,     // animate only once
+    easing: 'ease-out'
+  });
+</script>
+</body>
+</html>
