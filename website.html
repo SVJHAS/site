@@ -15,6 +15,20 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
+            cursor: none; /* Hide default cursor */
+        }
+        .custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 15px;
+            height: 15px;
+            background-color: #007bff; /* Cursor dot color */
+            border-radius: 50%;
+            pointer-events: none; /* Allow clicks through the cursor */
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease-out; /* increased duration and eased */
+            z-index: 9999;
         }
 
 
@@ -135,17 +149,24 @@
             background-color: #f8f9fa; /* Changed from white to lighter grey */
         }
 
-        .portfolio-videos {
+        .portfolio-row {
             display: flex;
-            gap: 30px;
             justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap; /* ensures videos wrap instead of overlapping */
             margin-bottom: 40px;
         }
 
+        .portfolio-column {
+            flex: 1 1 350px; /* grow, shrink, basis to prevent overlap */
+            max-width: 600px; /* match video width */
+            text-align: center;
+        }
+
         .portfolio-video {
-            width: calc(33.33% - 20px); /* Adjusted width for 3 videos with gap */
-            height: 220px; /* Slightly taller */
-            background-color: #f8f9fa; /* Changed from #333 to lighter grey */
+            width: 100%;
+            height: 400px;
+            background-color: #f8f9fa;
             border-radius: 8px;
             position: relative;
             overflow: hidden;
@@ -159,7 +180,7 @@
 
         /* Clients Section */
         .clients {
-            background-color: #222; /* Darker grey */
+            background-color: #1C1D20; /* Match testimonial background */
             color: white;
             padding: 60px 50px;
             text-align: center;
@@ -180,8 +201,8 @@
         }
 
         .client-logo-placeholder {
-            width: 150px; /* Adjust as needed */
-            height: 80px; /* Adjust as needed */
+            width: 200px; /* Adjust as needed */
+            height: 100px; /* Adjust as needed */
             background-color: #555;
             display: flex;
             align-items: center;
@@ -201,9 +222,9 @@
 
         /* Testimonials Section */
         .testimonials {
-            background-color: #222; /* Darker grey */
+            background-color: #1C1D20; /* Darker grey */
             color: white;
-            padding: 60px 50px;
+            padding: 30px 50px;
             text-align: center;
         }
 
@@ -221,27 +242,23 @@
         }
 
         .testimonial-container {
-            max-width: 1000px; /* Increased max-width to accommodate side-by-side */
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            flex-direction: row; /* Changed to row for side-by-side */
-            flex-wrap: wrap; /* Allow wrapping for multiple testimonials */
-            justify-content: center; /* Center items when they wrap */
+            flex-direction: row;
+            flex-wrap: nowrap; /* keeps image and video side by side */
+            justify-content: center;
             gap: 30px;
-            align-items: flex-start; /* Align items to the top */
+            align-items: flex-start;
         }
 
         .testimonial-placeholder {
-            width: 450px; /* Adjust as needed for two per row */
-            height: 250px; /* Adjust as needed */
             background-color: #555;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 8px;
+            padding: 20px; /* space around media to show grey background */
+            display: inline-block;
             color: white;
             font-size: 16px;
-            border-radius: 8px;
-            padding: 20px; /* Added padding */
             text-align: center;
         }
 
@@ -327,7 +344,7 @@
             }
 
             .testimonial-container {
-                flex-direction: column;
+                flex-direction: column; /* stack on small screens */
                 text-align: center;
             }
 
@@ -366,7 +383,7 @@
     <section class="hero" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 140px 50px 80px 50px; background-color: #f8f9fa;">
         <div class="hero-text" style="flex: 1; min-width: 300px; text-align: left;">
             <h1 style="line-height: 1.3; font-size: 48px; font-weight: bold;">
-                <span style="background-color: #007bff; color: white; padding: 0 8px;">Business Owners:</span> Generate 5-10 Qualified Leads Using AI and Automation 
+                <span style="background-color: #007bff; color: white; padding: 0 8px;">Business Owners:</span> Generate 5-10 Qualified Leads Using AI and Automation and Save Hours Daily
             </h1>
             <p style="font-size: 20px; color: #333; margin-top: 40px; font-family: 'Assistant', sans-serif;">
                 <span id="typewriter"></span>
@@ -427,47 +444,56 @@ typeDelete();
             </a>
         </div>
         <div class="hero-video slide-in-right" style="flex: 1; min-width: 300px; height: 400px;">
-            <div style="position: relative; padding-bottom: 64.86161251504213%; height: 0;">
-                <iframe src="https://www.loom.com/embed/0e0fc7fc623e4caabcf9d23bb9763add?sid=a9a93796-d0c2-4514-a881-0f50f854d539" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-            </div>
+            <video controls playsinline oncontextmenu="return false;" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                <source src="vsl.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </section>
 
     <!-- Portfolio Section -->
     <section class="portfolio">
-        <div class="portfolio-videos">
-            <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-                    <iframe src="https://www.loom.com/embed/0e0fc7fc623e4caabcf9d23bb9763add?sid=a9a93796-d0c2-4514-a881-0f50f854d539" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-                </div>
-            </div>
-            <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-                    <iframe src="https://www.loom.com/embed/0e0fc7fc623e4caabcf9d23bb9763add?sid=a9a93796-d0c2-4514-a881-0f50f854d539" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-                </div>
-            </div>
-            <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-                    <iframe src="https://www.loom.com/embed/0e0fc7fc623e4caabcf9d23bb9763add?sid=a9a93796-d0c2-4514-a881-0f50f854d539" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-                </div>
-            </div>
+      <div class="portfolio-row">
+        <div class="portfolio-column">
+          <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+            <video controls playsinline class="portfolio-video" oncontextmenu="return false;">
+              <source src="TechnicalSkills.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
+        <div class="portfolio-column">
+          <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+            <video controls playsinline class="portfolio-video" oncontextmenu="return false;">
+              <source src="No Results.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
-        
-        <div style="text-align: center; margin-top: 5px;">
-            <a href="#" class="cta-button" style="padding: 24px 48px; font-size: 24px;" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/hassanfive90/45min', prefill: {}, utm: {}, branding: true, pageSettings: {hideEventTypeDetails: false, hideLandingPageDetails: false, primaryColor: '#007bff', textColor: '#000000'}, modalWidth: 900, modalHeight: 700}); return false;">Book a Call</a>
+        <div class="portfolio-column">
+          <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+            <video controls playsinline class="portfolio-video" oncontextmenu="return false;">
+              <source src="Results.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 5px;">
+        <a href="#" class="cta-button" style="padding: 24px 48px; font-size: 24px;" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/hassanfive90/45min', prefill: {}, utm: {}, branding: true, pageSettings: {hideEventTypeDetails: false, hideLandingPageDetails: false, primaryColor: '#007bff', textColor: '#000000'}, modalWidth: 900, modalHeight: 700}); return false;">Book a Call</a>
+      </div>
     </section>
 
     <!-- Clients Section -->
     <section class="clients">
         <h2>We've built systems for:</h2>
-        <div class="client-logos-container">
+        <div class="client-logos-container" style="margin-top: 70px;">
             <!-- Add your business logos here. Example: -->
-            <img src="YOUR_BUSINESS_LOGO_URL_1" alt="Business Logo 1" class="client-logo-placeholder">
-            <img src="YOUR_BUSINESS_LOGO_URL_2" alt="Business Logo 2" class="client-logo-placeholder">
-            <img src="YOUR_BUSINESS_LOGO_URL_3" alt="Business Logo 3" class="client-logo-placeholder">
-            <img src="YOUR_BUSINESS_LOGO_URL_4" alt="Business Logo 4" class="client-logo-placeholder">
+            <img src="AgentHub.png" alt="Business Logo 1" class="client-logo-placeholder" style="width:320px; height:auto;">
+            <img src="StarletBlack.png" alt="Business Logo 2" class="client-logo-placeholder" style="height:180px; width:auto;">
+            <img src="Advacare.png" alt="Business Logo 3" class="client-logo-placeholder" style="width:300px; height:auto;">
+            <img src="Qadash.png" alt="Business Logo 4" class="client-logo-placeholder" style="width:320px; height:auto;">
         </div>
     </section>
 
@@ -480,11 +506,14 @@ typeDelete();
         <div class="testimonial-container">
             <!-- Testimonial 1 (Image) -->
             <div class="testimonial-placeholder">
-                <img src="YOUR_TESTIMONIAL_IMAGE_URL_1" alt="Client Testimonial 1" style="width:100%; height:100%; object-fit:cover;">
+                <img src="Fred.png" alt="Client Testimonial 1" style="max-width:100%; height:auto; object-fit:contain; display:block;">
             </div>
             <!-- Testimonial 2 (Video) -->
             <div class="testimonial-placeholder">
-                <div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="YOUR_TESTIMONIAL_VIDEO_URL_2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+                <video controls playsinline style="max-width:100%; height:auto; object-fit:contain; display:block;" oncontextmenu="return false;">
+                    <source src="CJ.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
         
@@ -517,6 +546,27 @@ typeDelete();
     once: true,     // animate only once
     easing: 'ease-out'
   });
+</script>
+</div>
+<div class="custom-cursor"></div>
+<script>
+const cursor = document.querySelector('.custom-cursor');
+let mouseX = 0, mouseY = 0;
+let currentX = 0, currentY = 0;
+
+document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+function animateCursor() {
+    currentX += (mouseX - currentX) * 0.15; // easing factor
+    currentY += (mouseY - currentY) * 0.15;
+    cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
+    requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
 </script>
 </body>
 </html>
