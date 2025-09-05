@@ -36,16 +36,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 3rem;
+            padding: 3rem 3rem; /* increased top padding */
             background-color: #f8f9fa;
-            height: 100px;
+            min-height: 150px; /* taller header to fit logo */
         }
 
         .logo-img {
             max-height: 180px;
             width: auto;
             object-fit: contain;
-            margin-top: 1rem;
+            margin-top: 0; /* remove previous top margin */
         }
 
         /* Buttons */
@@ -71,7 +71,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 2rem;
-            padding: 5vh 5vw;
+            padding: 8vh 5vw 5vh 5vw; /* increased top padding */
             background-color: #f8f9fa;
         }
 
