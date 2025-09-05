@@ -15,7 +15,7 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-            cursor: none; /* Hide default cursor */
+            cursor: none;
         }
 
         .custom-cursor {
@@ -24,7 +24,7 @@
             left: 0;
             width: 15px;
             height: 15px;
-            background-color: #007bff; 
+            background-color: #007bff;
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
@@ -48,7 +48,8 @@
             margin-top: 1rem;
         }
 
-        .book-call-btn {
+        /* Buttons */
+        .book-call-btn, .cta-button {
             background-color: #007bff;
             color: white;
             padding: 16px 28px;
@@ -58,8 +59,9 @@
             transition: background-color 0.3s;
         }
 
-        .book-call-btn:hover {
+        .book-call-btn:hover, .cta-button:hover {
             background-color: #0056b3;
+            color: white;
         }
 
         /* Hero Section */
@@ -99,7 +101,6 @@
             position: relative;
         }
 
-        /* CTA Buttons */
         .cta-button {
             font-size: clamp(16px, 2vw, 22px);
             padding: clamp(12px, 2vw, 20px) clamp(24px, 4vw, 40px);
@@ -109,12 +110,6 @@
             display: inline-block;
             margin-top: 2rem;
             transition: background-color 0.5s ease, transform 0.3s ease, color 0.5s ease;
-        }
-
-        .cta-button:hover {
-            background-color: #6c757d;
-            color: #f8f9fa;
-            transform: translateY(-3px);
         }
 
         /* Portfolio Section */
@@ -174,18 +169,18 @@
         }
 
         .client-logo-placeholder {
-            width: 200px;
-            height: 100px;
-            background-color: #555;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 14px;
-            border-radius: 8px;
         }
 
-        /* Testimonials Section */
+        .client-logo-placeholder img {
+            width: 300px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Testimonials */
         .testimonials {
             background-color: #1C1D20;
             color: white;
@@ -195,9 +190,9 @@
 
         .testimonial-container {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             justify-content: center;
-            gap: 30px;
+            gap: 2rem;
             align-items: flex-start;
         }
 
@@ -263,7 +258,7 @@
 
             .testimonial-container {
                 flex-direction: column;
-                text-align: center;
+                align-items: center;
             }
 
             .portfolio-row {
@@ -283,169 +278,139 @@
 </head>
 <body>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">
-            <img src="logo 2.png" alt="Smarter Sidekicks Logo" class="logo-img">
-        </div>
-        <a href="#" class="book-call-btn" onclick="bookCall()">Book a Call</a>
-    </header>
+<header class="header">
+    <div class="logo">
+        <img src="logo 2.png" alt="Smarter Sidekicks Logo" class="logo-img">
+    </div>
+    <a href="#" class="book-call-btn" onclick="bookCall()">Book a Call</a>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-text">
-            <h1>
-                <span style="background-color: #007bff; color: white; padding: 0 8px;">Business Owners:</span>
-                Generate 5-10 Qualified Leads Using AI and Automation and Save Hours Daily
-            </h1>
-            <p style="font-size: 20px; color: #333; margin-top: 1rem; font-family: 'Assistant', sans-serif;">
-                <span id="typewriter"></span>
-            </p>
-            <a href="#" class="cta-button" onclick="bookCall()">Book a Call</a>
-        </div>
-        <div class="hero-video slide-in-right">
-            <video controls playsinline oncontextmenu="return false;">
-                <source src="vsl.mp4" type="video/mp4">
-            </video>
-        </div>
-    </section>
+<section class="hero">
+    <div class="hero-text">
+        <h1>
+            <span style="background-color: #007bff; color: white; padding: 0 8px;">Business Owners:</span>
+            Generate 5-10 Qualified Leads Using AI and Automation and Save Hours Daily
+        </h1>
+        <p style="font-size: 20px; color: #333; margin-top: 1rem; font-family: 'Assistant', sans-serif;">
+            <span id="typewriter"></span>
+        </p>
+        <a href="#" class="cta-button" onclick="bookCall()">Book a Call</a>
+    </div>
+    <div class="hero-video slide-in-right">
+        <video controls playsinline oncontextmenu="return false;">
+            <source src="vsl.mp4" type="video/mp4">
+        </video>
+    </div>
+</section>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio">
-        <div class="portfolio-row">
-            <div class="portfolio-column">
-                <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                    <video controls playsinline oncontextmenu="return false;">
-                        <source src="TechnicalSkills.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-            <div class="portfolio-column">
-                <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                    <video controls playsinline oncontextmenu="return false;">
-                        <source src="No Results.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-            <div class="portfolio-column">
-                <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                    <video controls playsinline oncontextmenu="return false;">
-                        <source src="Results.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 1rem;">
-            <a href="#" class="cta-button" onclick="bookCall()">Book a Call</a>
-        </div>
-    </section>
-
-    <!-- Clients Section -->
-    <section class="clients">
-        <h2>We've built systems for:</h2>
-        <div class="client-logos-container">
-            <img src="AgentHub.png" alt="Business Logo 1" class="client-logo-placeholder">
-            <img src="StarletBlack.png" alt="Business Logo 2" class="client-logo-placeholder">
-            <img src="Advacare.png" alt="Business Logo 3" class="client-logo-placeholder">
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="testimonial-container">
-            <div class="testimonial-placeholder">
-                <img src="Fred.png" alt="Client Testimonial 1" style="max-width:100%; height:auto;">
-            </div>
-            <div class="testimonial-placeholder">
-                <video controls playsinline style="max-width:100%; height:auto;" oncontextmenu="return false;">
-                    <source src="CJ.mp4" type="video/mp4">
+<section class="portfolio">
+    <div class="portfolio-row">
+        <div class="portfolio-column">
+            <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+                <video controls playsinline oncontextmenu="return false;">
+                    <source src="TechnicalSkills.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
-        <div style="margin-top: 1rem;">
-            <a href="#" class="cta-button" onclick="bookCall()">Book a Call</a>
+        <div class="portfolio-column">
+            <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+                <video controls playsinline oncontextmenu="return false;">
+                    <source src="No Results.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <img src="logo 2.png" alt="Smarter Sidekicks Logo" class="footer-logo-img">
-        <div class="footer-contact">
-            <div class="phone">+44 7718 049741</div>
-            <a href="mailto:hassan@smartersidekick.com" class="email">hassan@smartersidekick.com</a>
+        <div class="portfolio-column">
+            <div class="portfolio-video" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+                <video controls playsinline oncontextmenu="return false;">
+                    <source src="Results.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
-    </footer>
-
-    <div class="copyright">
-        Copyright © Smarter Sidekicks All Rights Reserved.
     </div>
+    <div style="text-align: center; margin-top: 1rem;">
+        <a href="#" class="cta-button" onclick="bookCall()">Book a Call</a>
+    </div>
+</section>
 
-    <!-- Scripts -->
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        function bookCall() {
-            Calendly.initPopupWidget({
-                url: 'https://calendly.com/hassanfive90/45min',
-                prefill: {},
-                utm: {},
-                branding: true,
-                pageSettings: {
-                    hideEventTypeDetails: false,
-                    hideLandingPageDetails: false,
-                    primaryColor: '#007bff',
-                    textColor: '#000000'
-                },
-                modalWidth: 900,
-                modalHeight: 700
-            });
-            return false;
-        }
+<section class="clients">
+    <h2>We've built systems for:</h2>
+    <div class="client-logos-container">
+        <div class="client-logo-placeholder"><img src="AgentHub.png" alt="Business Logo 1"></div>
+        <div class="client-logo-placeholder"><img src="StarletBlack.png" alt="Business Logo 2"></div>
+        <div class="client-logo-placeholder"><img src="Advacare.png" alt="Business Logo 3"></div>
+    </div>
+</section>
 
-        AOS.init({
-            duration: 1000,
-            once: true,
-            easing: 'ease-out'
-        });
+<section class="testimonials">
+    <div class="testimonial-container">
+        <div class="testimonial-placeholder">
+            <img src="Fred.png" alt="Client Testimonial 1" style="max-width:100%; height:auto;">
+        </div>
+        <div class="testimonial-placeholder">
+            <video controls playsinline style="max-width:100%; height:auto;" oncontextmenu="return false;">
+                <source src="CJ.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <div style="margin-top: 1rem;">
+        <a href="#" class="cta-button" onclick="bookCall()">Book a Call</a>
+    </div>
+</section>
 
-        // Typewriter
-        const text = `(Or you get your money back)<br><br>
-        If you want <span style="background-color: #007bff; color: white; padding: 0 4px;">MORE qualified customers</span> & a consistent flow of <span style="background-color: #007bff; color: white; padding: 0 4px;">NEW qualified customers</span>, save time and use <span style="background-color: #007bff; color: white; padding: 0 4px;">AI</span>, complete the survey and book a call…`;
-        const typewriter = document.getElementById("typewriter");
-        let index = 0, deleting = false, delay = 25, pauseAtEnd = 30000;
-        function typeDelete() {
-            if(!deleting && index <= text.length) {
-                typewriter.innerHTML = text.slice(0,index)+'<span class="cursor">|</span>';
-                index++;
-                if(index > text.length){setTimeout(()=>{deleting=true; typeDelete();},pauseAtEnd);return;}
-            } else if(deleting && index >= 0){
-                typewriter.innerHTML = text.slice(0,index)+'<span class="cursor">|</span>';
-                index--;
-                if(index < 0) deleting=false;
-            }
-            setTimeout(typeDelete,delay);
-        }
-        typeDelete();
-    </script>
-    <style>
-        .cursor { display:inline-block; animation: blink 0.7s infinite; }
-        @keyframes blink { 0%,50%,100%{opacity:1;} 25%,75%{opacity:0;} }
-    </style>
+<footer class="footer">
+    <img src="logo 2.png" alt="Smarter Sidekicks Logo" class="footer-logo-img">
+    <div class="footer-contact">
+        <div class="phone">+44 7718 049741</div>
+        <a href="mailto:hassan@smartersidekick.com" class="email">hassan@smartersidekick.com</a>
+    </div>
+</footer>
 
-    <!-- Custom Cursor -->
-    <div class="custom-cursor"></div>
-    <script>
-        const cursor = document.querySelector('.custom-cursor');
-        let mouseX=0, mouseY=0, currentX=0, currentY=0;
-        document.addEventListener('mousemove', e => {mouseX=e.clientX; mouseY=e.clientY;});
-        function animateCursor() {
-            currentX += (mouseX-currentX)*0.15;
-            currentY += (mouseY-currentY)*0.15;
-            cursor.style.transform = `translate(${currentX}px,${currentY}px)`;
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-    </script>
+<div class="copyright">
+    Copyright © Smarter Sidekicks All Rights Reserved.
+</div>
+
+<script src="https://assets.calendly.com/assets/external/widget.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+function bookCall() {
+    Calendly.initPopupWidget({
+        url: 'https://calendly.com/hassanfive90/45min',
+        prefill: {},
+        utm: {},
+        branding: true,
+        pageSettings: {hideEventTypeDetails:false, hideLandingPageDetails:false, primaryColor:'#007bff', textColor:'#000000'},
+        modalWidth:900, modalHeight:700
+    });
+    return false;
+}
+
+AOS.init({duration:1000, once:true, easing:'ease-out'});
+
+// Typewriter
+const text = `(Or you get your money back)<br><br>
+If you want <span style="background-color:#007bff;color:white;padding:0 4px;">MORE qualified customers</span> & a consistent flow of <span style="background-color:#007bff;color:white;padding:0 4px;">NEW qualified customers</span>, save time and use <span style="background-color:#007bff;color:white;padding:0 4px;">AI</span>, complete the survey and book a call…`;
+const typewriter = document.getElementById("typewriter");
+let index=0, deleting=false, delay=25, pauseAtEnd=30000;
+function typeDelete() {
+    if(!deleting && index <= text.length){typewriter.innerHTML=text.slice(0,index)+'<span class="cursor">|</span>'; index++; if(index>text.length){setTimeout(()=>{deleting=true;typeDelete();},pauseAtEnd); return;}}
+    else if(deleting && index>=0){typewriter.innerHTML=text.slice(0,index)+'<span class="cursor">|</span>'; index--; if(index<0) deleting=false;}
+    setTimeout(typeDelete,delay);
+}
+typeDelete();
+</script>
+<style>
+.cursor { display:inline-block; animation: blink 0.7s infinite; }
+@keyframes blink { 0%,50%,100%{opacity:1;} 25%,75%{opacity:0;} }
+</style>
+
+<div class="custom-cursor"></div>
+<script>
+const cursor = document.querySelector('.custom-cursor');
+let mouseX=0, mouseY=0, currentX=0, currentY=0;
+document.addEventListener('mousemove', e=>{mouseX=e.clientX; mouseY=e.clientY;});
+function animateCursor(){currentX+=(mouseX-currentX)*0.15; currentY+=(mouseY-currentY)*0.15; cursor.style.transform=`translate(${currentX}px,${currentY}px)`; requestAnimationFrame(animateCursor);}
+animateCursor();
+</script>
 
 </body>
 </html>
