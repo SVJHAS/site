@@ -168,15 +168,19 @@ body {
     color: white;
     padding: 30px 50px;
     text-align: center;
+    margin-top: -100px; /* move section further up */
 }
 .testimonial-container {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
     gap: 2rem;
+    justify-content: center;
     align-items: flex-start;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
 }
 .testimonial-placeholder {
+    flex: 0 0 auto;
+    min-width: 250px;
     background-color: #555;
     border-radius: 8px;
     padding: 20px;
@@ -184,6 +188,16 @@ body {
     color: white;
     font-size: 16px;
     text-align: center;
+}
+.testimonial-placeholder video {
+    width: 200px;
+    height: auto;
+    display: block;
+}
+.testimonial-placeholder img {
+    width: 500px;
+    height: auto;
+    display: block;
 }
 /* Footer */
 .footer {
@@ -211,7 +225,7 @@ body {
     background-color: #007bff;
     color: #f8f9fa;
 }
-copyright {
+footer.copyright {
     text-align: center;
     color: #007bff;
     font-size: 14px;
@@ -228,8 +242,7 @@ copyright {
         text-align: center;
     }
     .testimonial-container {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: nowrap;
     }
     .portfolio-row {
         flex-direction: column;
@@ -239,7 +252,6 @@ copyright {
         flex-direction: column;
         text-align: center;
     }
-    /* Mobile adjustments: hide top-right button and reduce logo size */
     .header {
         flex-direction: row;
         justify-content: flex-start;
@@ -321,18 +333,23 @@ copyright {
         <div class="client-logo-placeholder"><img src="AgentHub.png" alt="Business Logo 1"></div>
         <div class="client-logo-placeholder"><img src="StarletBlack.png" alt="Business Logo 2"></div>
         <div class="client-logo-placeholder"><img src="Advacare.png" alt="Business Logo 3"></div>
-        <div class="client-logo-placeholder"><img src="image-removebg-preview.png" alt="Business Logo 4" class="new-client-logo"></div>
+        <div class="client-logo-placeholder"><img src="RR.png" alt="Business Logo 4" class="new-client-logo"></div>
     </div>
 </section>
 
 <section class="testimonials">
     <div class="testimonial-container">
         <div class="testimonial-placeholder">
-            <img src="Fred.png" alt="Client Testimonial 1" style="max-width:100%; height:auto;">
+            <img src="Fred.png" alt="Client Testimonial 1">
         </div>
         <div class="testimonial-placeholder">
             <video controls playsinline style="max-width:100%; height:auto;" oncontextmenu="return false;">
                 <source src="CJ.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="testimonial-placeholder">
+            <video controls playsinline style="width: 550px; height:auto;" oncontextmenu="return false;">
+                <source src="DiderTestimonial.mp4" type="video/mp4">
             </video>
         </div>
     </div>
@@ -349,9 +366,9 @@ copyright {
     </div>
 </footer>
 
-<div class="copyright">
-    Copyright © Smarter Sidekicks All Rights Reserved.
-</div>
+<footer class="copyright">
+    &copy; 2025 Smarter Sidekicks. All Rights Reserved.
+</footer>
 
 <script src="https://assets.calendly.com/assets/external/widget.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
